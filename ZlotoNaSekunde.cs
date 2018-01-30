@@ -18,9 +18,9 @@ public class ZlotoNaSekunde : MonoBehaviour {
         znsDisplay.text = ZlotoNaSek() + " zloto/sek";
     }
     //----------------------------------------------------------------
-    public int ZlotoNaSek()
+    public float ZlotoNaSek()
     {
-        int tick = 0;
+        float tick = 0;
         foreach (PrzedmiotMenager przedmiot in przedmioty) {
             tick += przedmiot.count * przedmiot.wartosc;
         }
@@ -29,7 +29,7 @@ public class ZlotoNaSekunde : MonoBehaviour {
     //----------------------------------------------------------------
         public void AutomatycznyGoldNaSekunde()
     {
-        klik.zloto += ZlotoNaSek();
+        klik.zloto += ZlotoNaSek() / 10;
     }
     //----------------------------------------------------------------
      IEnumerator AutomatycznyTick()
@@ -37,7 +37,7 @@ public class ZlotoNaSekunde : MonoBehaviour {
         while (true)
         {
             AutomatycznyGoldNaSekunde();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.10f);
         }
     }
     }
